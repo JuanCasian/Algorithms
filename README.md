@@ -6,3 +6,5 @@ This is just a repo with different algorithms implemented by me
 - [Quicksort](/quicksort)
 - [Recursive Excercises](/recursive_excercises)
 - [Selection Sort](/selection_sort)
+- [Bread Frist Search](/bread_first_search)
+- [Dijkstra’s algorithm](/dijkstras)
