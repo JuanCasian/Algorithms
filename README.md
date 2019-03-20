@@ -9,3 +9,4 @@ This is just a repo with different algorithms implemented by me
 - [Bread Frist Search](/bread_first_search)
 - [Dijkstra’s algorithm](/dijkstras)
 - [Longest Common Substring](/longest_common_substring)
+- [K-nearest Neighbor](/k_nearest_neighbor)
