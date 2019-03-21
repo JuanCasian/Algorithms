@@ -2,6 +2,7 @@ import pickle
 import numpy as np
 from scipy.stats import mode
 
+
 class NearestNeighbor:
 	def __init__(self):
 		pass
@@ -23,10 +24,13 @@ class NearestNeighbor:
 			min_indexes = []
 			distances = np.sum(np.abs(self.Xtr - X[i,:]), axis = 1)
 			min_indexes.append(np.argsort(distances)[:k])
-			best_index = mode(min_indexes, axis = None)[0][0]
-			Ypred[i] = self.ytr[best_index]
-			
+			best_labels = []
+			for j in range(len(min_indexes)):
+				best_labels.append(self.ytr[min_indexes[j]])
+			best_label = mode(best_labels, axis = None)[0][0]
+			Ypred[i] = best_label
 		return Ypred
+		
 
 	def evaluate(self, n, k):
 		with open("./data/test_batch", mode='rb') as file:
@@ -35,6 +39,8 @@ class NearestNeighbor:
 		real = np.array(batch["labels"][:n])
 		predictions = self.predict(X, k)
 		accuracy = 0
+		print(real)
+		print(predictions)
 		for i in range(n):
 			if (predictions[i] == real[i]):
 				accuracy += 1
@@ -50,7 +56,7 @@ def main():
 	classifier.train("./data", 1)
 	for i in range(1,10):
 		print("Evaluating accuracy with k value of: {}".format(i))
-		classifier.evaluate(50, i)
+		classifier.evaluate(128, i)
 
 
 
